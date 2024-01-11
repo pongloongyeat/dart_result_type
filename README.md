@@ -1,3 +1,7 @@
+[![Build status](https://github.com/pongloongyeat/dart_result_type/actions/workflows/dart.yaml/badge.svg)](https://github.com/pongloongyeat/dart_result_type/actions/workflows/dart.yaml)
+[![Pub package](https://img.shields.io/pub/v/dart_result_type.svg)](https://pub.dev/packages/dart_result_type)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 A type-safe way of representing success or error values, mimicking Rust's [Result](https://doc.rust-lang.org/std/result/enum.Result.html) type.
 
 ## Panics
