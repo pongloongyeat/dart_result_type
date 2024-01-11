@@ -57,6 +57,15 @@ sealed class Result<T, E> {
     return unwrapOr(fn());
   }
 
+  /// Extracts a result's value or returns null if it is an [Err].
+  T? unwrapOrNull() {
+    return switch (this) { Ok(value: final value) => value, Err() => null };
+  }
+
+  E? unwrapErrOrNull() {
+    return switch (this) { Ok() => null, Err(value: final value) => value };
+  }
+
   /// Extracts a result's value if the result is an [Ok] and throws a
   /// [ExpectedValueException] with some helpful [message] as its context if the
   /// result is an [Err].
@@ -83,11 +92,6 @@ sealed class Result<T, E> {
       Ok(value: final value) => Ok<T, S>(value),
       Err(value: final value) => Err<T, S>(transform(value)),
     };
-  }
-
-  /// Extracts a result's value or returns null if it is an [Err].
-  T? unwrapOrNull() {
-    return switch (this) { Ok(value: final value) => value, Err() => null };
   }
 
   @override

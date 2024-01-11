@@ -9,10 +9,22 @@ Future<void> doSomething() async {
     final result: Result<Json, ApiError> = await apiCall() ;
     switch (result) {
         Ok(value: final value):
-            showSuccessDialog(value);
+            showSuccessDialog(value.content);
         Err(value: final value):
             showFailureDialog(value);
     };
+}
+```
+
+## Option
+
+Since Dart has sound null-safety, there is no need to represent an optional value with `Option<T>`. Instead, there is a `.unwrapOrNull()` and `unwrapErrOrNull` method to return the `Result`'s underyling value, or null, if there is no value.
+
+```dart
+Future<void> doSomething() async {
+    final result: Result<Json, ApiError> = await apiCall();
+    final content = result.unwrapOrNull()?.content;
+    if (content != null) showSuccessDialog(content);
 }
 ```
 

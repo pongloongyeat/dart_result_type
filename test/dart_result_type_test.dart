@@ -41,8 +41,10 @@ void main() {
     expect(mappedErr.unwrapErr() == '', isTrue);
   });
 
-  test('can convert to null if Err', () {
+  test('can null-safely unwrap', () {
     expect(ok.unwrapOrNull() == '', isTrue);
     expect(err.unwrapOrNull(), isNull);
+    expect(ok.unwrapErrOrNull(), isNull);
+    expect(err.unwrapErrOrNull() == 0, isTrue);
   });
 }
