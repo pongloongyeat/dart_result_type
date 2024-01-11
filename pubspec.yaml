@@ -1,0 +1,12 @@
+name: dart_result_type
+description: Rust's Result type in Dart
+version: 1.0.0
+repository: https://github.com/pongloongyeat/dart_result_type
+issue_tracker: https://github.com/pongloongyeat/dart_result_type/issues
+
+environment:
+  sdk: ^3.0.0
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
