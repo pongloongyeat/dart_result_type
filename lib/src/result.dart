@@ -21,7 +21,7 @@ sealed class Result<T, E> {
   /// Returns true if the result is an [Err].
   bool get isErr => this is Err;
 
-  /// Forcefully extracts a result's value if the result is an [Ok] and throws a
+  /// Extracts a result's value if the result is an [Ok] and throws a
   /// [UnwrappedNonExistentValueException] if the result is an [Err].
   T unwrap() {
     return switch (this) {
@@ -30,7 +30,7 @@ sealed class Result<T, E> {
     };
   }
 
-  /// Forcefully extracts a result's value if the result is an [Err] and throws
+  /// Extracts a result's value if the result is an [Err] and throws
   /// a [UnwrappedNonExistentValueException] if the result is an [Ok].
   E unwrapErr() {
     return switch (this) {
@@ -39,8 +39,8 @@ sealed class Result<T, E> {
     };
   }
 
-  /// Forcefully extracts a result's value if the result is an [Ok] and fallsback
-  /// to [other] if the result is an [Err].
+  /// Extracts a result's value if the result is an [Ok] and fallsback to
+  /// [other] if the result is an [Err].
   T unwrapOr(T other) {
     return switch (this) {
       Ok(value: final value) => value,
@@ -48,7 +48,7 @@ sealed class Result<T, E> {
     };
   }
 
-  /// Forcefully extracts a result's value if the result is an [Ok] and throws a
+  /// Extracts a result's value if the result is an [Ok] and throws a
   /// [ExpectedValueException] with some helpful [message] as its context if the
   /// result is an [Err].
   T expect(String message) {
