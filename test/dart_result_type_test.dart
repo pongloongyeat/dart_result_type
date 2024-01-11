@@ -25,6 +25,7 @@ void main() {
     );
 
     expect(err.unwrapOr('') == '', isTrue);
+    expect(err.unwrapOrElse(() => '') == '', isTrue);
 
     expect(ok.expect('') == '', isTrue);
     expect(() => err.expect(''), throwsA(isA<ExpectedValueException>()));

@@ -3,6 +3,9 @@ part 'exceptions.dart';
 /// Signature for transforming a value [A] into a value [B].
 typedef Transform<A, B> = B Function(A element);
 
+/// Signature for a function returning [T].
+typedef Callback<T> = T Function();
+
 /// {@template Result}
 /// A type-safe class for propagating results and errors, in similar fashion to
 /// Rust's [Result](https://doc.rust-lang.org/std/result/) type.
@@ -46,6 +49,12 @@ sealed class Result<T, E> {
       Ok(value: final value) => value,
       Err() => other,
     };
+  }
+
+  /// Extracts a result's value if the result is an [Ok] and returns the result
+  /// of [fn] if the result is an [Err].
+  T unwrapOrElse(Callback<T> fn) {
+    return unwrapOr(fn());
   }
 
   /// Extracts a result's value if the result is an [Ok] and throws a
